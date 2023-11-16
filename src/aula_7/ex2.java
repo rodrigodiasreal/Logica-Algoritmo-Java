@@ -4,18 +4,17 @@ import java.util.Scanner;
 
 /**
  *
- * @author rodri
+ * @author latif
  */
 public class ex2 {
-    public static int tamanho () {
+     public static int tamanho () {
         System.out.println("Tamanho do vetor *_*");
-        Scanner input = new Scanner (System.in);
+         Scanner input = new Scanner (System.in);
         System.out.println("Tamanho: ");
-        
+       
         int tamanho = input.nextInt();
         return tamanho;   
     }
-    
     public static int[] criarVetor(int tamanho){
         System.out.println("*_* Cria o vetor *-*");
         Scanner input = new Scanner(System.in);
@@ -26,39 +25,58 @@ public class ex2 {
         }
         return vetor;
     }
-    
-    public static void imprimir(int [] vetor) {
+    private static void imprimir(int [] vetor) {
         System.out.println("*-* imprimir *_*");
         for(int i=0; i<vetor.length; i++){
-            System.out.printf("vetor [%d]: %d \n", i, vetor[i]);
+            System.out.printf("vetor[%d]: %d \n",i, vetor[i]);
+    }
+}
+    public static void imprimePares(int []v ){
+        System.out.println("*-* Elementos pares*-*");
+        for(int i=0; i<v.length; i++){
+         if(v[i]%2 == 0){   
+             System.out.printf("vetor[%d]: %d \n",i, v[i]);
+         }
         }
     }
+     public static void imprimeImpares(int[]v){
+         System.out.println("*-*Imprime Impares *-*");
+         for(int i=0;i<v.length;i++){
+             if(v[i]%2==1)
+                System.out.printf("vetor[%d]: %d \n",i, v[i]);
+        }
+     }
+     public static int[] vetorPares(int [] v){
+         System.out.println("*-*Vetor Pares *-*");
+         int cont =0;
+         for(int i=0; i<v.length;i++){
+             if(v[i]%2==0){
+                 cont++;
+             }
+         }
+         //instanciado o vetor de pares
+         int[] vetorPares = new int[cont];
+         int j = 0;
+         for (int i=0;i<v.length;i++){
+             if(v[i]%2 == 0){
+                 vetorPares[j] = v[i];
+                 j++;
+                 
+             }
+         }
+         return vetorPares;
+         
+     }
+     
+             
     
-    public static void imprimePares (int[] v){
-        
-        for(int i=0; i<v.length;i++){
-            if(v[i]%2 ==00){
-                System.out.printf("vetor [%d]: %d\n", i, v[i]);
-            }
-        }
-        
+    public static void main(String[] args) {
+        int t = tamanho();
+        int [] v = criarVetor(t);
+        imprimir(v);
+        imprimePares(v);
+        imprimeImpares(v);
+        imprimePares (vetorPares(v));
+       
     }
-        
-        public static void main(String[] args){
-            int t = tamanho();
-            int[] v = criarVetor(t);
-            imprimir(v);
-            imprimePares(v);
-        }
-    }
-
-/**
- * * TO DO
- * 1) Função para imprimir os números pares.
- * 2) Função para imprimir os números ímpares.
- * 3) Função separar em um vetor os números pares.
- * 4) Função separar em um vetor os números ímpares.
- * 5) Função para verificar ocorrência de um determinado número.
- * 6) Função para obter um número.
- * 7) Função para verificar o número de ocorrências no vetor.
- */
+}
